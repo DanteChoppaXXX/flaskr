@@ -1,2 +1,0 @@
-# flaskr
-Blog Application

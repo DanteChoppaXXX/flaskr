@@ -80,3 +80,10 @@ def sign_up():
         print(username, email, password)
 
     return render_template('public/sign_up.html')
+
+@app.route('/profile/<username>')
+def profile(username):
+
+    print(username)
+
+    return render_template('public/profile.html')

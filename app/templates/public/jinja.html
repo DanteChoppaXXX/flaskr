@@ -5,14 +5,14 @@ endblock %} {% block main %}
   <div class="row">
     <div class="col">
       <h1>Jinja Template</h1>
-      <br />
+      <hr />
 
       <h3>Variables</h3>
-      <br />
+      <hr />
       <p>Name: {{my_name}}</p>
 
       <h3>Looping</h3>
-      <br />
+      <hr />
       <ul>
         {% for language in languages %}
         <li>{{ language }}</li>
@@ -20,7 +20,7 @@ endblock %} {% block main %}
       </ul>
 
       <h3>Looping with index</h3>
-      <br />
+      <hr />
       <ul>
         {% for language in languages %}
         <li>{{ loop.index }}: {{ language }}</li>
@@ -28,7 +28,7 @@ endblock %} {% block main %}
       </ul>
 
       <h3>Looping a dict</h3>
-      <br />
+      <hr />
       <ul>
         {% for k, v in friends.items() %}
         <li>{{ k }}: {{ v }}</li>
@@ -36,7 +36,7 @@ endblock %} {% block main %}
       </ul>
 
       <h3>Looping a dict keys</h3>
-      <br />
+      <hr />
       <ul>
         {% for k in friends.keys() %}
         <li>{{ k }}</li>
@@ -44,17 +44,55 @@ endblock %} {% block main %}
       </ul>
 
       <h3>Access list member</h3>
-      <br />
+      <hr />
       <p>{{ languages[0] }}</p>
 
       <h3>Access dict member</h3>
-      <br />
+      <hr />
       <p>{{ friends['Tom'] }}</p>
 
       <h3>Access class attribute</h3>
-      <br />
+      <hr />
       <p>{{ my_remote.name }}</p>
       <p>{{ my_remote.description }}</p>
+
+      <h3>Unpack Variables</h3>
+      <hr />
+      {% set a, b, c, d = colors %}
+      <p>{{ a }}</p>
+      <p>{{ b }}</p>
+      <p>{{ c }}</p>
+      <p>{{ d }}</p>
+
+      <h3>Call a function</h3>
+      <hr />
+      <p>{{ repeat(2, 5) }}</p>
+
+      <h3>Call a class method</h3>
+      <hr />
+      <p>{{ my_remote.clone() }}</p>
+      <p>{{ my_remote.pull() }}</p>
+
+      <h3>Conditionals</h3>
+      <hr />
+      {% if cool %}
+      <p>Cool is {{ cool }}</p>
+      {% endif %}
+
+      <h3>Conditionals</h3>
+      <hr />
+      {% if age < 18 %}
+      <p>Adults Only</p>
+      {% elif age > 100 %}
+      <p>You should be dead by now</p>
+      {% else %}
+      <p>You may enter</p>
+      {% endif %}
+
+      <h3>Template filter</h3>
+      <hr />
+      <p>{{ friends|length }}</p>
+      <p>{{ my_name|join('* ') }}</p>
     </div>
   </div>
 </div>

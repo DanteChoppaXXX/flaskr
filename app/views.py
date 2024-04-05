@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 from datetime import datetime
 
 
@@ -69,3 +69,14 @@ def jinja():
 @app.route('/about')
 def about():
     return "<h3>This is the about page</h3>"
+
+@app.route('/sign-up', methods=['GET', 'POST'])
+def sign_up():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+
+        print(username, email, password)
+
+    return render_template('public/sign_up.html')

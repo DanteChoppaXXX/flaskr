@@ -1,5 +1,6 @@
-{% extends 'public/templates/public_template.html' %} {% block title %}Jinja{%
-endblock %} {% block main %}
+{% extends 'public/templates/public_template.html' %} {% import
+"macros/input_macros.html" as im %} {% block title %}Jinja{% endblock %} {%
+block main %}
 
 <div class="container">
   <div class="row">
@@ -106,8 +107,11 @@ endblock %} {% block main %}
       <hr />
       <p>{{ mal_code }}</p>
 
-      {% macro input(label='', type='text', name='', id='', placeholder='') -%}
-      {%- endmacro %}
+      {{ im.input(label='Your name', name='name', id='name', placeholder='Enter
+      your name') }} {{ im.input(label='Your age', type='number', name='age',
+      id='age', placeholder='Enter your age') }} {{ im.input(label='Password',
+      type='password', name='password', id='password', placeholder='Enter your
+      password') }}
     </div>
   </div>
 </div>

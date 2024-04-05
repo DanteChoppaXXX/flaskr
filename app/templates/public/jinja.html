@@ -93,6 +93,21 @@ endblock %} {% block main %}
       <hr />
       <p>{{ friends|length }}</p>
       <p>{{ my_name|join('* ') }}</p>
+
+      <h3>Custom filter</h3>
+      <hr />
+      <p>{{ date| clean_date }}</p>
+
+      <h3>Escaping</h3>
+      <hr />
+      <p>{{ my_html|safe }}</p>
+
+      <h3>Malicious Code</h3>
+      <hr />
+      <p>{{ mal_code }}</p>
+
+      {% macro input(label='', type='text', name='', id='', placeholder='') -%}
+      {%- endmacro %}
     </div>
   </div>
 </div>

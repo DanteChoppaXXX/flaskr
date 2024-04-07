@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, make_response
 from datetime import datetime
 
 
@@ -9,6 +9,9 @@ def clean_date(dt):
 
 @app.route('/')
 def index():
+
+    print(app.config["DB_NAME"])
+
     return render_template('public/index.html')
 
 @app.route('/jinja')
@@ -87,3 +90,29 @@ def profile(username):
     print(username)
 
     return render_template('public/profile.html')
+
+@app.route('/upload-image', methods=['GET', 'POST'])
+def upload_image():
+
+
+    return render_template('public/upload_image.html')
+
+
+@app.route('/cookies')
+def cookies():
+
+    res = make_response("Cookies", 200)
+
+    res.set_cookie(
+        "flavor",
+         value="chocolate chip",
+         max_age=10,
+         expires=None,
+         path=request.path,
+         domain=None,
+         secure=False,
+         httponly=False,
+         
+    )
+
+    return res
